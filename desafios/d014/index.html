@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Desconto</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calcular desconto</h1>
+    <div onclick="desconto()">Desconto de 10%</div>
+    <p id="res">Clique no botão acima para iniciar</p>
+    <script>
+        function desconto(){
+            var produto = window.prompt('Qual é o produto que você está comprando? ')
+            var res = window.document.getElementById('res')
+            var preço = window.prompt(`Qual é o preço de ${produto}`)
+            if (!isNaN(preço) && preço != ''){
+                preço = Number(preço)
+                var desconto = preço * 0.10
+                var novo_preço = preço - desconto
+                res.innerHTML = `<p><strong>Calculando desconto de 10% para ${produto}</strong></p>`
+                res.innerHTML += `<p>O preço original era ${preço.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>`
+                res.innerHTML += `<p>Você acaba de ganhar ${desconto.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} de desconto (-10%)</p>`
+                res.innerHTML += `No fim, você vai pagar ${novo_preço.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} no produto ${produto}`
+            }else{
+                window.alert('ERRO! Informe um preço válido')
+            }
+        }
+    </script>
+</body>
+</html>

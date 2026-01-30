@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #4085da;
+            font: 17px Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        div#quadro {
+            background-color: white;
+            color: black;
+            min-height: 170px;
+            width: 460px;
+            padding: 20px;
+            line-height: 35px;
+            text-align: left;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 5px 4px 17px 0px #000000a3;
+            transition: all .25s ease;
+        }
+        input {
+            font-size: 17px;
+            width: 85px;
+        }
+        input#inum {
+            width: 160px;
+        }
+        div > p {
+            font-size: 17px;
+            margin: 5px;
+        }
+        p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+    <title>Analisador de Números</title>
+</head>
+<body>
+    <h1>Analisador de Números</h1>
+    <div id="quadro">
+        <p>Número (entre 1 e 100): <input type="number" name="num" id="inum"> 
+            <input type="button" value="Adicionar" onclick="adicionar()">
+        </p> 
+        <select name="res" id="res" size="10" style="width: 150px; height: 150px;">
+            <option></option>
+        </select>
+        <p><input type="button" value="Finalizar" onclick="finalizar()"></p>
+        <div id="fim"></div>
+    </div>
+    <p><em>&copy;CursoemVídeo</em></p>
+    <script> 
+    var num = [] 
+    var fina = window.document.getElementById('fim') 
+    function adicionar() { 
+        fina.innerText = ''
+        var n = Number(window.document.getElementById('inum').value)
+        var res = window.document.getElementById('res') 
+        if (n > 100 || n < 1 || num.includes(n)) { 
+            window.alert('Valor inválido ou já encontrado na lista') 
+        } else if (!num.includes(n)) { 
+            var resultado = document.createElement('option') 
+            resultado.text = `Valor ${n} adicionado.`
+            res.appendChild(resultado) 
+            num.push(n) 
+            } 
+        }
+    function finalizar() { 
+        if (num.length === 0) {
+            window.alert('Adicione valores antes de finalizar')
+        } else {
+        fina.innerText += `Ao todo, temos ${num.length} números cadastrados.`
+        fina.innerText += `\nO maior valor informado foi ${Math.max(...num)}.`
+        fina.innerText += `\nO menor valor informado foi ${Math.min(...num)}.`
+        var soma = 0 
+        for (var i in num) { 
+            soma += num[i] 
+        } 
+        fina.innerText += `\nSomando todos os valores, temos ${soma}.`
+        var media = soma / (num.length) 
+        fina.innerText += `\nA média dos valores digitados é ${media}.`
+        } 
+    }
+    </script>
+</body>
+</html>

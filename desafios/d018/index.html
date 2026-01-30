@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço modou</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Preço mudou</h1>
+    <div onclick="verificar()">Verificar</div>
+    <p id="res">Clique no botão acima para analisar a mudança de preço</p>
+    <script>
+        function verificar(){
+            res = window.document.getElementById('res')
+            preço_anterior = window.prompt('Qual era o preço anterior do produto? ')
+            if (!isNaN(preço_anterior) && preço_anterior != ''){
+                preço_anterior = Number(preço_anterior)
+                preço_atual = window.prompt('Qual é o preço atual do produto? ')
+                if (!isNaN(preço_atual) && preço_atual != ''){
+                    preço_atual = Number(preço_atual)
+                    res.innerHTML = `<p><strong>Analisando os valores informados</strong></p>`
+                    res.innerHTML += `<p>O produto custava ${preço_anterior.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} e agora custa ${preço_atual.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>`
+                    if (preço_anterior < preço_atual){
+                        res.innerHTML += '<p>Hoje o produto está mais caro</p>'
+                        diferença = preço_atual - preço_anterior
+                        res.innerHTML += `<p>O preço subiu ${diferença.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} em relação ao preço anterior</p>`
+                        aumento = diferença / preço_anterior
+                        res.innerHTML += `Uma variação de ${aumento.toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1})} pra cima`
+                    }else{
+                        res.innerHTML += '<p>Hoje o produto está mais barato</p>'
+                        diferença = preço_anterior - preço_atual
+                        res.innerHTML += `<p>O preço caiu ${diferença.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} em relação ao preço anterior</p>`
+                        diminuiu = diferença / preço_anterior
+                        res.innerHTML += `Uma variação de ${diminuiu.toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1})} pra baixo`
+                    }
+                }else{
+                    window.alert('ERRO! O preço atual não é válido')
+                }
+            }else{
+                window.alert('ERRO! O preço anterior não é válido')
+            }
+        }
+    </script>
+</body>
+</html>

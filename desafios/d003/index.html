@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: #4085da;
+            font: 18px Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        div#quadro{
+            background-color: white;
+            color: black;
+            min-height: 170px;
+            width: 460px;
+            padding: 20px;
+            line-height: 35px;
+            text-align: left;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 5px 4px 17px 0px #000000a3;
+            transition: all .25s ease;
+        }
+        input{
+            font-size: 18px;
+        }
+        div > p{
+            font-size: 18px;
+            margin: 5px;
+        }
+        div#res{
+            padding-top: 10px;
+            text-align: center;
+        }
+        p{
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        img#foto{
+            display: none;
+            margin: 10px auto 0;
+            max-width: 240px;
+            width: auto;
+            height: auto;
+
+            border-radius: 50%;
+        }
+    </style>
+    <title>Verificador de Idade</title>
+</head>
+<body>
+    <h1>Verificador de Idade</h1>
+    <div id="quadro">
+        Ano de Nascimento: <input type="number" name="ano" id="iano">
+        <p>Sexo:<input type="radio" name="sexo" id="isexoM"><label for="Masculino">Masculino</label> <input type="radio" name="sexo" id="isexoF"><label for="Feminino">Feminino</label></p>
+        <input type="button" value="Verificar" onclick="verificar()">
+        <div id="res">Preencha os dados acima para ver o resultado!
+        </div>
+        <img src="" alt="" id="foto">
+    </div>
+    <p><em>&copy; CursoemVideo</em></p>
+    <script>
+        function verificar(){
+            var anonas = Number(window.document.getElementById('iano').value)
+            var hj = new Date()
+            anoatual = hj.getFullYear()
+            if(anonas == 0 || anonas > anoatual || (anonas < (anoatual - 130)) ){
+                alert('ERRO! Verifique os dados e tente novamente.')
+            }else {
+                var idade = anoatual - anonas
+                var sexo = ''
+                if(document.getElementById('isexoF').checked){
+                    sexo = 'Mulher'
+                }
+                else{
+                    sexo = 'Homem'
+                }
+                var res = window.document.getElementById('res')
+                res.innerHTML = `Detectamos ${sexo} com ${idade} anos.`
+                var img = window.document.getElementById('foto')
+                if (sexo === 'Mulher'){
+                    if (idade <= 16) {
+                        img.src = 'midia/menina_crianca.jpg'
+                    }
+                    else if (idade <= 40){
+                        img.src = 'midia/mulher_jovem.jpeg'
+                    }
+                    else if (idade >= 60){
+                        img.src = 'midia/mulher_idosa.jpg'
+                    }
+                }
+                else{
+                    if (idade < 16) {
+                        img.src = 'midia/menino_crianca.jpeg'
+                    }
+                    else if (idade <= 40){
+                        img.src = 'midia/homem_jovem.jpg'
+                    }
+                    else if (idade >= 60){
+                        img.src = 'midia/homem_idoso.png'
+                    }
+                }
+                img.style.display = 'block'
+            }
+    }
+    </script>
+</body>
+</html>

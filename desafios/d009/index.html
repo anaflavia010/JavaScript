@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antes e Depois</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 230px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Antes e depois</h1>
+    <div onclick="calcular()">Antecessor e Sucessor</div>
+    <script>
+        function calcular(){
+            n = Number(window.prompt('Digite um número inteiro qualquer'))
+            if (!isNaN(n) && n != ''){
+                num = Number(n)
+                window.alert(`Antes de ${num}, temos o número ${num-1}.\nDepois de ${num}, temos o número ${num+1}.`)
+            }else{
+                window.alert('ERRO! Digite um número válido')
+            }
+
+        }
+    </script>
+</body>
+</html>

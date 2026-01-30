@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fórmula de Bhaskara</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resolvendo Bhaskara</h1>
+    <div onclick="calcular()">Calcular</div>
+    <p id="res">Considerando uma equação do formato <em><strong>a</strong>x² + <strong>b</strong>x + <strong>c</strong> = 0</em>, aperte o botão acima para calcular o valor de Δ.</p>
+    <script>
+        function calcular(){
+            var a = window.prompt('Qual é o valor de A?')
+            var res = window.document.getElementById('res')
+            if(!isNaN(a) && a != ''){
+                a = Number(a)
+                var b = window.prompt('Qual é o valor de B?')
+                if(!isNaN(b) && b != ''){
+                    b = Number(b)
+                    var c = window.prompt('Qual é o valor de C?')
+                    if(!isNaN(c) && c != ''){
+                        c = Number(c)
+                        res.innerHTML = '<p><strong>Resolvendo Bhaskara</strong></p>'
+                        res.innerHTML += `<p>A equação atual é <strong>${a}x² ${b >= 0 ? '+ ' + b : '- ' + (-b)}x ${c >= 0 ? '+ ' + c : '- ' + (-c)} = 0</strong></p>`
+                        res.innerHTML += `<p>O cálculo realizado será Δ = ${b}² - 4 • ${a} • ${c}</p>`
+                        delta = ((b ** 2) - (4 * a * c))
+                        res.innerHTML += `<p>O valor calulado foi <mark><strong>Δ = ${delta}</strong></mark></p>`
+                        if (delta > 0){
+                            res.innerHTML += `<p>O cálculo atual é x = (${b >= 0 ? '-' : '-(-'}${Math.abs(b)}) ± √${delta}) / (2 * ${a})</p>`
+                            x1 = (-b + Math.sqrt(delta)) / (2 * a)
+                            x2 = (-b - Math.sqrt(delta)) / (2 * a)
+                            res.innerHTML += `<p>O <mark><strong>x' = ${x1.toFixed(2)}</strong></mark> e o <mark><strong>x" = ${x2.toFixed(2)}</strong></mark> </p>`
+                        }
+                        else{
+                            res.innerHTML += `Como delta foi ${delta} (menor que 0) a equação <mark>não tem solução real</mark>`
+                        }
+                    }else{
+                        window.alert('ERRO! Valor de C inválido')
+                    }
+                }else{
+                    window.alert('ERRO! Valor de B inválido')
+                }
+            }else{
+                window.alert('ERRO! Valor de A inválido')
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            font: 18px Arial;
+        }
+        input#pais{
+            font: 18px Arial;
+            width: 150px;
+        }
+        div{
+            margin-top: 20px;
+        }
+    </style>
+    <title>Desafio da Nacionalidade</title>
+</head>
+<body>
+    <h1>Nacionalidade</h1>
+    País de nascimento: <input type="text" name="pais" id="pais" autocomplete="country" placeholder="Brasil...">
+    <input type="button" value="Verificar" onclick="verificar()">
+    <div id="res"></div>
+    <script>
+        var pais = window.document.getElementById('pais')
+        var nacion = window.document.getElementById('res')
+        function verificar(){
+            nacion.innerText = `Nascendo em ${pais.value},`
+            if(pais.value.toUpperCase() == 'BRASIL' || pais.value.toUpperCase() == 'BR'){
+                nacion.innerText += ' Você é Brasileiro(a)'
+            }
+            else{
+                nacion.innerText += ' Você é Estrangeiro(a)'
+            }}
+    </script>
+</body>
+</html>

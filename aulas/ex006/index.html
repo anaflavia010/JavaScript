@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operadores em JavaScript</title>
+</head>
+
+<body>
+  <h1>Operadores</h1>
+    <h2>Aritméticos</h2>
+      <p>5 + 2 = 7 -> (soma)</p>
+      <p>5 - 2 = 3 -> (subtração)</p>
+      <p>5 * 2 = 10 -> (multiplicação)</p>
+      <p>5 / 2 = 2.5 -> (divisão)</p>
+      <p>5 % 2 = 1 -> (mod(resto))</p>
+      <p>5 ** 2 = 25 -> (potência)</p>
+      <h3>Ordem de Precedência dos Aritméticos</h3>
+        <p>1º -> ()</p>
+        <p>2º -> ** </p>
+        <p>3º -> * / %</p>
+        <p>4º -> + -</p>
+
+    <h2>Atribuição</h2>
+      <h3>Atribuições simples</h3>
+        <p>var a = 5 + 3 -> 8</p>
+        <p>var b = a % 5 -> 3</p>
+        <p>var c = 5 * b ** 2 -> 45</p>
+        <p>var d = 10 - a / 2 -> 6</p>
+        <p>var e = 6 * 2 / d -> 2</p>
+        <p>var f = b % e + 4 / e -> 3</p>
+      <h3>Auto-atribuições</h3>
+        <p>var n = 3 -> n = n + 4</p>
+        <p>n = n + 4 (simplificado -> n += 4 (n recebe ele mesmo + 4))</p>
+      <h3>Incremento</h3>
+        <p>x += 1 ou x ++</p>
+        <p>x ++ recebe x + 1</p>
+        <p>x -= 1 ou x --</p>
+        <p>x -- recebe x - 1</p>
+    <h2>Relacionais</h2>
+      <p>Expressões com operador relacional SEMPRE vai gerar um resultado booleano (true ou false)</p>
+      <p>ex: 5 > 2 == true</p>
+      <p> < menor que</p>
+      <p> > maior que</p>
+      <p> >= maior ou igual</p>
+      <p> <= menor ou igual</p>
+      <p> == igual</p>
+      <p> != diferende</p>
+      <h3>Identidade</h3>
+        <p>5 == 5 true</p>
+        <p>5 == '5' true (o js não compara o tipo do valor, so seu peso portanto 5 e '5' são iguais)</p>
+        <p>5 === '5' false (=== verifica se são identicos (mesmo valor e mesmo tipo))</p>
+        <p>5 === 5 true</p>
+        <p>5 !== '5' true (!== verifica se a identidade é diferente)</p>
+      <h3>Ordem de Precedência dos Relacionais</h3>
+        <p>Não tem, resolve da esquerda para a direita</p>
+    <h2>Lógicos</h2>
+      <p>Expressões lógicas SEMPRE vai gerar um resultado booleano (true ou false)</p>
+      <h3>! negação ( not )</h3>
+          <p>not True = False</p>
+          <p>not False = True</p>
+      <h3>&& conjunção ( and )</h3>
+        <p>So vai ser TRUE se todas forem TRUE</p>
+        <p>True and True = True</p>
+        <p>False and True = False</p>
+        <p>True and False = False</p>
+        <p>False and False = False</p>
+      <h3>|| disjunção ( or )</h3>
+        <p>Se pelo menos uma for TRUE vai ser TRUE</p>
+        <p>True or True = True</p>
+        <p>True or False = True</p>
+        <p>False or True = True</p>
+        <p>False or False = False</p>
+        <h4>Ordem de Precedência dos Lógicos</h4>
+        <p>1º -> not</p>
+        <p>2º -> and</p>
+        <p>3º -> or</p>
+    <h2>Ternário</h2>
+      <p>? :</p>
+      <p>teste <strong>?</strong> true <strong>:</strong> false</p>
+      <p>ex: media >= 7.0 <strong>?</strong> "Aprovado" <strong>:</strong> "Reprovado"</p>
+      <p>Vai aparecer "Aprovado" se for TRUE e "Reprovado" se for FALSE</p>
+  <h2>Ordem de Precedência entre os operadores</h2> 
+      <p>1º -> Aritméticos</p>
+      <p>2º -> Relacionais</p>
+      <p>3º -> Lógicos</p>
+      <p>4º -> Ternário</p>
+</body>
+</html>

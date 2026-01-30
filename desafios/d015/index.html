@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajustar salário</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reajuste salarial</h1>
+    <div onclick="reajuste()">Reajustar Salário</div>
+    <p id="res">Clique no botão acima para iniciar</p>
+    <script>
+        function reajuste(){
+            var res = window.document.getElementById('res')
+            var nome = window.prompt('Qual é o nome do funcionário?')
+            var sal = window.prompt(`Qual é o salário de ${nome}`)
+            if (!isNaN(sal) && sal != ''){
+                sal = Number(sal)
+                var porcento = window.prompt(`O salário de ${nome} vai ser reajustado em qual porcentagem?`)
+                if (!isNaN(porcento) && porcento != '' && porcento > 0){
+                    porcento = Number(porcento)
+                    aumento = sal * (porcento / 100)
+                    novo_salario = sal + aumento
+                    res.innerHTML = `<p><strong>${nome} recebeu um aumento salarial!</strong></p>`
+                    res.innerHTML += `<p>O salário atual era ${sal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>`
+                    res.innerHTML += `<p>Com um aumento de ${porcento}%, o salário vai aumentar ${aumento.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})} no próximo mês</p>`
+                    res.innerHTML += `E a partir daí, ${nome} vai passar a ganhar ${novo_salario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`
+                }else{
+                    window.alert('ERRO! Digite um aumento válido')
+                }
+            }else{
+                window.alert('ERRO! Digite um salário válido')
+            }
+        }
+    </script>
+</body>
+</html>

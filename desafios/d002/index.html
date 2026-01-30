@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style>
+        body{
+            color: white;
+            font: 18px Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        div#quadro{
+            background-color: white;
+            color: black;
+            height: 250px;
+            width: 470px;
+            padding: 10px;
+            line-height: 50px;
+            text-align: center;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 5px 4px 17px 0px #000000a3;
+        }
+        img{
+            border-radius: 50%;
+        }
+        p{
+            margin-top: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hora do Dia</h1>
+    <div id="quadro"><div id="hora"><p>Agora são </p></div>
+    <img src="midia/manha.jpeg" alt="Imagem Planta" id="foto"></div>
+    <p><em>&copy; CursoemVideo</em></p>
+    <script>
+        var agora = new Date()
+        var hora = agora.getHours()
+        var h = window.document.getElementById('hora')
+        h.innerText += ` ${hora} horas.`
+        var img = window.document.getElementById('foto')
+        if (hora >= 6 && hora < 12){
+            document.body.style.background = '#cfbf90'
+            img.src = 'midia/manha.jpeg'
+        }
+        else if (hora >= 12 && hora < 18){
+            document.body.style.background = '#a87963'
+            img.src = 'midia/tarde.jpeg'
+        }
+        else{
+            document.body.style.background = '#474948'
+            img.src = 'midia/noite.jpeg'
+        }
+    </script>
+</body>
+</html>

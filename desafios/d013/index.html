@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertor R$ -> US$</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Convertor R$ -> US$</h1>
+    <div onclick="converter()">Converter</div>
+    <p id="res">Clique no botão acima para iniciar</p>
+    <script>
+        var res = window.document.getElementById('res')
+        cotação = window.prompt('Antes de mais nada. Quanto está a cotação do dólar agora? ')
+        if (!isNaN(cotação) && cotação != ''){
+            cotação = Number(cotação)
+            function converter(){
+                real = window.prompt('Quantos R$ você tem na carteira?')
+                if (!isNaN(real) && real != ''){
+                    real = Number(real)
+                    res.innerHTML = `<strong>Conversão de Reais para Dólares</strong>`
+                    res.innerHTML += `<p>Você tem ${real.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'})} na carteira</p>`
+                    res.innerHTML += `<p>Considerando que US$1.00 = ${(cotação).toLocaleString('pt-BR', {style:'currency', currency: 'BRL'})} na cotação informada</p>`
+                    res.innerHTML += `<p>Você pode comprar ${(real / cotação).toLocaleString('en-US', {style:'currency', currency: 'USD'})} dólares</p>`
+                }else{
+                    window.alert('ERRO! Digite um valor válido')
+                }
+            }
+        }else{
+            window.alert('ERRO! Digite um valor válido')
+        }
+    </script>
+</body>
+</html>

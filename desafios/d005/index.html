@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: #4085da;
+            font: 18px Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        div#quadro{
+            background-color: white;
+            color: black;
+            min-height: 170px;
+            width: 460px;
+            padding: 20px;
+            line-height: 35px;
+            text-align: left;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 5px 4px 17px 0px #000000a3;
+            transition: all .25s ease;
+        }
+        input{
+            font-size: 18px;
+        }
+        div > p{
+            font-size: 18px;
+            margin: 5px;
+        }
+        p{
+            margin-top: 10px;
+            font-size: 15px;
+        }
+    </style>
+    <title>Tabuada</title>
+</head>
+<body>
+    <h1>Tabuada</h1>
+    <div id="quadro">
+        <p>Número: <input type="number" name="num" id="inum">
+        <input type="button" value="Gerar Tabuada" onclick="gerar()"></p>
+        <select name="res" id="res" size="10">
+            <option>Digite um número acima: </option>
+        </select>
+    </div>
+        <p><em>&copy;CursoemVídeo</em></p>
+    <script>
+        function gerar(){
+            var num = Number(window.document.getElementById('inum').value)
+            var res = window.document.getElementById('res')
+            res.innerText = ''
+            if (num == ''){
+                alert('Por favor, digite um número!')
+            }else{
+                for (var c = 1; c <= 10; c++){
+                    var resultado = document.createElement('option')
+                    resultado.text = `${num} x ${c} = ${num * c}\n`
+                    res.appendChild(resultado)
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do aluno</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        div{
+            display: inline-block;
+            width: 200px;
+            height: 80px;
+            border: 2px solid gray;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Situação do aluno</h1>
+    <div onclick="verificar()">Entrar com as notas</div>
+    <p id="res">Clique no botão acima para informar as notas do aluno</p>
+    <script>
+        function verificar(){
+            res = window.document.getElementById('res')
+            var nome = window.prompt('Qual é o nome do aluno? ')
+            var nota1 = window.prompt(`Primeira nota de ${nome}:`)
+            if (!isNaN(nota1) && nota1 != ''){
+                nota1 = Number(nota1)
+                var nota2 = window.prompt(`Segunda nota de ${nome}:`)
+                if (!isNaN(nota2) && nota2 != ''){
+                    nota2 = Number(nota2)
+                    res.innerHTML = `<p><strong>Analisando a situação de ${nome}</strong></p>`
+                    var media = (nota1 + nota2) / 2
+                    if (media < 3){
+                        var situação = 'em <mark style="background-color: #ff000073; color: #8a0000"><strong>REPROVADO</strong></mark>'
+                        var margem = 'abaixo de 3'
+                    }else if (media < 6){
+                        var situação = '<mark style="background-color: #ffa5008f; color: #784e00"><strong>RECUPERAÇÃO</strong></mark>'
+                        var margem = 'entre 3 e 6'
+                    }else{
+                        var situação = '<mark style="background-color: #0080008a; color: #003500;"><strong>APROVADO</strong></mark>'
+                        var margem = 'acima de 6'
+                    }
+                    res.innerHTML += `<p>Com as notas ${nota1} e ${nota2}, a <strong>média é ${media}</strong></p>`
+                    res.innerHTML += `Com média ${margem}, o aluno está ${situação}`
+                }else{
+                    window.alert(`ERRO! Segunda nota de ${nome} inválida`)
+                }
+            }else{
+                window.alert(`ERRO! Primeira nota de ${nome} inválida`)
+            }
+        }
+    </script>
+</body>
+</html>
